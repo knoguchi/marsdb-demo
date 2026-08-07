@@ -42,6 +42,15 @@ other install methods (Homebrew, building from source).
 recommendations dataset above — an actor's ensemble-cast co-star network,
 not a toy example.
 
+## Natural language
+
+[`natural-language`](natural-language) — plain-English questions against
+the recommendations dataset, translated to real Cypher by a local LLM
+(via [`marsdb-nl2cypher`](https://github.com/knoguchi/marsdb/tree/main/marsdb-nl2cypher)
++ Ollama) and actually run. Includes an honest example of the LLM
+getting a query wrong (right property, wrong graph element) that still
+parses and runs cleanly — not just the successful runs.
+
 ## About the data
 
 `demos/movies`' dataset isn't vendored — its `load.sh` fetches the load
