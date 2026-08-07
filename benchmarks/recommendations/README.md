@@ -40,8 +40,18 @@ Docker (for the Neo4j side), and `gunzip`.
   for this dataset, not invented. `updates.cypher`/`deletes.cypher`
   cover a representative point-write, bulk-write, and relationship-write
   each.
+- `queries-exploratory.cypher` — not part of `bench.sh`'s timed
+  comparison, just genuinely interesting things to ask this dataset
+  (most prolific actors, real director/actor collaborations, which
+  genre rates highest, harshest/most generous critics, a six-degrees
+  path between two actors who never worked together). Run any one with
+  `../../visualize`'s Python setup, or directly:
+  `marsdb recommendations.db "$(sed -n '/^MATCH/p' queries-exploratory.cypher | head -1)"`
 - `bench.sh` — the runner.
 - `results.md` — append-only log of real runs.
+
+See [`../../visualize`](../../visualize) for a network-graph rendering
+of this same dataset.
 
 ## Why phase totals, not per-query numbers, compare engines
 

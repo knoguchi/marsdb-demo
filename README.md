@@ -35,6 +35,13 @@ other install methods (Homebrew, building from source).
 |---|---|---|
 | [recommendations](benchmarks/recommendations) | Neo4j's recommendations graph (28,863 nodes, 166,261 relationships) | Load/query/update/delete, MarsDB vs Neo4j, same statements |
 
+## Visualize
+
+[`visualize`](visualize) renders a real network graph (Python,
+`marsdb`+`networkx`+`matplotlib`) from a MarsDB query against the
+recommendations dataset above — an actor's ensemble-cast co-star network,
+not a toy example.
+
 ## About the data
 
 `demos/movies`' dataset isn't vendored — its `load.sh` fetches the load
