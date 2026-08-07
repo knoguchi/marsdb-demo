@@ -1,0 +1,13 @@
+CREATE RANGE INDEX FOR (n:Movie) ON (n.imdbId);
+CREATE RANGE INDEX FOR (n:Movie) ON (n.imdbRating);
+CREATE RANGE INDEX FOR (n:Movie) ON (n.released);
+CREATE RANGE INDEX FOR (n:Movie) ON (n.tagline);
+CREATE RANGE INDEX FOR (n:Movie) ON (n.title);
+CREATE RANGE INDEX FOR (n:Movie) ON (n.year);
+CREATE RANGE INDEX FOR (n:Person) ON (n.name);
+CREATE RANGE INDEX FOR (n:User) ON (n.name);
+CREATE CONSTRAINT constraint_userId FOR (node:User) REQUIRE (node.userId) IS UNIQUE;
+CREATE CONSTRAINT constraint_movieId FOR (node:Movie) REQUIRE (node.movieId) IS UNIQUE;
+CREATE CONSTRAINT constraint_person_tmdbId FOR (node:Person) REQUIRE (node.tmdbId) IS UNIQUE;
+CREATE CONSTRAINT constraint_movie_tmdbId FOR (node:Movie) REQUIRE (node.tmdbId) IS UNIQUE;
+CREATE CONSTRAINT constraint_genre_name FOR (node:Genre) REQUIRE (node.name) IS UNIQUE;

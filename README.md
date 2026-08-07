@@ -29,8 +29,21 @@ other install methods (Homebrew, building from source).
   its load script uses `FOREACH`, which MarsDB's grammar doesn't have a
   rule for at all.
 
+## Benchmarks
+
+| Benchmark | Dataset | What it measures |
+|---|---|---|
+| [recommendations](benchmarks/recommendations) | Neo4j's recommendations graph (28,863 nodes, 166,261 relationships) | Load/query/update/delete, MarsDB vs Neo4j, same statements |
+
 ## About the data
 
-None of these datasets are vendored in this repo. Each demo's `load.sh`
-fetches the load script directly from its original source at run time —
-see that demo's own README for attribution.
+`demos/movies`' dataset isn't vendored — its `load.sh` fetches the load
+script directly from its original source at run time (a plain Cypher
+file, small enough to just curl on demand).
+
+`benchmarks/recommendations`' dataset *is* vendored (gzipped, in `data/`)
+— its only source is a Neo4j-proprietary `.dump` file with no plain
+script anywhere, so getting a portable Cypher version out of it requires
+running a real Neo4j instance once (see that benchmark's own README for
+the exact extraction steps); committing the result means `bench.sh`
+doesn't need Docker+Neo4j+APOC just to load MarsDB's side.

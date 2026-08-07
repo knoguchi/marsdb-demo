@@ -1,0 +1,13 @@
+CREATE INDEX ON :Movie(imdbId);
+CREATE INDEX ON :Movie(imdbRating);
+CREATE INDEX ON :Movie(released);
+CREATE INDEX ON :Movie(tagline);
+CREATE INDEX ON :Movie(title);
+CREATE INDEX ON :Movie(year);
+CREATE INDEX ON :Person(name);
+CREATE INDEX ON :User(name);
+CREATE INDEX ON :User(userId) UNIQUE;
+CREATE INDEX ON :Movie(movieId) UNIQUE;
+CREATE INDEX ON :Person(tmdbId) UNIQUE;
+CREATE INDEX ON :Movie(tmdbId) UNIQUE;
+CREATE INDEX ON :Genre(name) UNIQUE;
