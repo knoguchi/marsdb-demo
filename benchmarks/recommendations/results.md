@@ -39,3 +39,34 @@ update phase total: 1.083562000s
 === Neo4j: delete ===
 delete phase total: 1.121471000s
 ```
+
+## 2026-08-08T17:26:18Z (marsdb @ 043973c)
+
+```
+=== MarsDB build ===
+=== MarsDB: load ===
+schema loaded in 54.048125ms
+data loaded in 66.507830333s
+nodes: QueryResult { columns: ["c"], rows: [[Property(Int(28863))]] }
+rels: QueryResult { columns: ["c"], rows: [[Property(Int(166261))]] }
+=== MarsDB: query ===
+matrix_review_counts: 97.020208ms (3 rows)
+misty_average_rating: 1.910459ms (1 rows)
+crimson_tide_collaborative_filtering: 4.197916ms (5 rows)
+inception_genre_similarity: 3.893084ms (5 rows)
+misty_all_ratings: 545.541µs (100 rows)
+1 pass(es) in 107.6355ms
+query phase total: .203115000s
+=== MarsDB: update ===
+point_update_single_property: 5.042792ms (0 rows)
+bulk_update_by_predicate: 41.964959ms (0 rows)
+add_new_relationship: 4.992333ms (0 rows)
+1 pass(es) in 52.054458ms
+update phase total: .080778000s
+=== MarsDB: delete ===
+delete_single_relationship: 7.037375ms (0 rows)
+detach_delete_single_node: 4.878084ms (0 rows)
+bulk_delete_by_predicate: 613.769084ms (0 rows)
+1 pass(es) in 625.731792ms
+delete phase total: .655925000s
+```

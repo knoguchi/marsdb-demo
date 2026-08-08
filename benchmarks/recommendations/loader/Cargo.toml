@@ -1,0 +1,16 @@
+[package]
+name = "recommendations-loader"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+# Builds against the sibling marsdb checkout (bench.sh's MARSDB_REPO
+# convention: this repo and `mars` sit next to each other), so the
+# benchmark always measures the checkout's current state, not a
+# published release.
+[dependencies]
+marsdb = { path = "../../../../mars/marsdb" }
+
+[[bin]]
+name = "load_recommendations"
+path = "src/main.rs"

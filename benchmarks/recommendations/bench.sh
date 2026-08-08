@@ -46,7 +46,10 @@ RESULTS="$WORKDIR/results.txt"
 
 if $RUN_MARSDB; then
   echo "=== MarsDB build ===" | tee -a "$RESULTS"
-  (cd "$MARSDB_REPO" && cargo build --release --example load_recommendations --example run_named_queries -p marsdb -p marsdb-cli >/dev/null 2>&1)
+  (cd "$MARSDB_REPO" && cargo build --release --example run_named_queries -p marsdb -p marsdb-cli)
+  # The loader is this repo's own tooling (benchmarks/recommendations/loader),
+  # built against the sibling marsdb checkout via its path dependency.
+  (cd "$HERE/loader" && cargo build --release)
   MARSDB_SHA="$(cd "$MARSDB_REPO" && git rev-parse --short HEAD)"
 
   DB="$WORKDIR/marsdb.db"
@@ -60,7 +63,7 @@ if $RUN_MARSDB; then
   }
 
   echo "=== MarsDB: load ===" | tee -a "$RESULTS"
-  "$MARSDB_REPO/target/release/examples/load_recommendations" "$DB" "$HERE/schema/marsdb.cypher" "$WORKDIR/data.cypher" | tee -a "$RESULTS"
+  "$HERE/loader/target/release/load_recommendations" "$DB" "$HERE/schema/marsdb.cypher" "$WORKDIR/data.cypher" | tee -a "$RESULTS"
 
   run_phase_marsdb "$HERE/queries.cypher" query
   run_phase_marsdb "$HERE/updates.cypher" update
